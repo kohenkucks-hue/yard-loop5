@@ -1,0 +1,4 @@
+export const dynamic = 'force-dynamic'
+import { getContent, styleVars, isVisible } from '../lib/content'
+import { SiteNav, SiteFooter, HiddenPage, Img, arr } from '../components/Shell'
+export default async function Page(){ const c=await getContent(); const key='pricing'; if(!isVisible(c,key)) return <HiddenPage c={c} name="Point-based pricing that is easy to explain."/>; return <main style={styleVars(c)}><SiteNav c={c}/><section className='pageHero'><p className='eyebrow'>Transparent pricing</p><h1>Point-based pricing that is easy to explain.</h1><p>{c.pageHeroes?.pricing?.subtext || ''}</p></section><section className='section'><div className='cards'><article className='card'><h3>{c.pricing.rangeValue}</h3><p>{c.pricing.text}</p><p>{c.pricing.note}</p><a className='btn' href='/estimate'>Open Estimator</a></article></div></section><SiteFooter c={c}/></main> }

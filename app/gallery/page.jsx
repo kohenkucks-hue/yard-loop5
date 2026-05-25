@@ -1,0 +1,4 @@
+export const dynamic = 'force-dynamic'
+import { getContent, styleVars, isVisible } from '../lib/content'
+import { SiteNav, SiteFooter, HiddenPage, Img, arr } from '../components/Shell'
+export default async function Page(){ const c=await getContent(); const key='gallery'; if(!isVisible(c,key)) return <HiddenPage c={c} name="Real work. Real homes. Real results."/>; return <main style={styleVars(c)}><SiteNav c={c}/><section className='pageHero'><p className='eyebrow'>Work photos</p><h1>Real work. Real homes. Real results.</h1><p>{c.pageHeroes?.gallery?.subtext || ''}</p></section><section className='section'><div className='cards'>{arr(c.gallery).map((g,i)=><article className='card photo' key={i}><Img src={g.image} label={g.label}/><h3>{g.label}</h3><p>{g.caption}</p></article>)}</div></section><SiteFooter c={c}/></main> }

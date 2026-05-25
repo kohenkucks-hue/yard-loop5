@@ -1,0 +1,4 @@
+export const dynamic = 'force-dynamic'
+import { getContent, styleVars, isVisible } from '../lib/content'
+import { SiteNav, SiteFooter, HiddenPage, Img, arr } from '../components/Shell'
+export default async function Page(){ const c=await getContent(); const key='services'; if(!isVisible(c,key)) return <HiddenPage c={c} name="Build a plan around the outside chores you want handled."/>; return <main style={styleVars(c)}><SiteNav c={c}/><section className='pageHero'><p className='eyebrow'>What Yard Loop coordinates</p><h1>Build a plan around the outside chores you want handled.</h1><p>{c.pageHeroes?.services?.subtext || ''}</p></section><section className='section'><div className='cards'>{arr(c.included).map((s,i)=><article className='card' key={i}><Img src={s.image} label={s.title}/><h3>{s.icon} {s.title}</h3><p>{s.text}</p></article>)}</div></section><SiteFooter c={c}/></main> }
